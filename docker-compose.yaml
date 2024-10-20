@@ -15,7 +15,7 @@ services:
       - ./decisions:/app/decisions
   owl-frontend:
     hostname: owl-frontend
-    image: athenadecisionsystems/athena-owl-frontend:1.0.
+    image: athenadecisionsystems/athena-owl-frontend:1.0.0
     container_name: owl-frontend
     ports:
       - 3000:3000
