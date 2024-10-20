@@ -2,7 +2,6 @@ services:
   ibu-backend:
     hostname: ibu-backend
     image: athenadecisionsystems/ibu-insurance:1.0.0
-    pull_policy: always
     container_name: ibu-backend
     ports:
       - 8002:8000
@@ -13,11 +12,10 @@ services:
     volumes:
       - ./data/file_content:/app/file_content
       - ./data/vs_db:/app/vs_db
-      - ../../decisions:/app/decisions
+      - ./decisions:/app/decisions
   owl-frontend:
     hostname: owl-frontend
-    image: athenadecisionsystems/athena-owl-frontend:1.0.0
-    pull_policy: always
+    image: athenadecisionsystems/athena-owl-frontend:1.0.
     container_name: owl-frontend
     ports:
       - 3000:3000
@@ -56,7 +54,6 @@ services:
       - QUARKUS_DATASOURCE_JDBC_URL=jdbc:postgresql://postgres:5432/insurancedb
   postgres:
     image: postgres:latest
-    restart: always
     container_name: postgres
     hostname: postgres
     environment:
@@ -83,4 +80,4 @@ services:
       - SAMPLE=false
       - LICENSE=accept
     volumes:
-      - ../../decisions/persistence:/config/dbdata/
+      - ./decisions/persistence:/config/dbdata/
