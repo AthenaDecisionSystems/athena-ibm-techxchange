@@ -1,0 +1,8 @@
+**/resdb.lock.db
+**/resdb.trace.db
+**/rtsdb.lock.db
+**/rtsdb.trace.db
+**/.env
+**/claimdb
+**/vs_db
+**/file_content
