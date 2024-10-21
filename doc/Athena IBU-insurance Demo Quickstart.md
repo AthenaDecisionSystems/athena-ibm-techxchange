@@ -1,6 +1,6 @@
 # Athena IBU-Insurance Demo Quickstart
 This demo showcases an Insurance Customer Service scenario where a chatbot, relying solely on pure LLM technology, including Retrieval-Augmented Generation (RAG), produces inaccurate responses that do not align with the insurance carrier's policy.  
-It then demonstrates the solution: An agentic architecture that orchestrates a rule-based decision service built with IBM Operational Decision Manager ([IBM ODM](https://www.ibm.com/fr-fr/products/operational-decision-manager){:target="_blank"}) and LLM-based agents available through [watsonx.ai](https://www.ibm.com/products/watsonx-ai).
+It then demonstrates the solution: An agentic architecture that orchestrates a rule-based decision service built with IBM Operational Decision Manager ([IBM ODM](https://www.ibm.com/fr-fr/products/operational-decision-manager)) and LLM-based agents available through [watsonx.ai](https://www.ibm.com/products/watsonx-ai).
 
 ## Table of Contents
 
@@ -65,12 +65,12 @@ Follow the progress of the pull/build/start process in Docker Desktop or in Coli
 
 The first step of the scenario relies on the Retrieval-Augmented Generation (RAG) mechanism. To prepare for this, you will need to upload the policy document, split it into chunks, and store the chunks in the vector database.  
 Please follow the following steps:
-1. Visit [the demo UI](http://localhost:3000/){:target="_blank"}
+1. Visit [the demo UI](http://localhost:3000/)
 2. Click on the **Chatbot** option located in the top menu
 3. Click on the **Documents** accordion located on the left-hand-side
 4. Click on the **IBU Policies document** link  
 
-Steps 2-4: [Please click](./1-DownloadPolicyDoc.png)  {:target="_blank"}
+Steps 2-4: [Please click](./1-DownloadPolicyDoc.png)  
 
 5. This opens the **Complaint Management Customer Retention Policy** pdf document in a new tab
 6. Click the Download link on your browser to store it locally
