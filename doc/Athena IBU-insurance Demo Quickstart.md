@@ -53,8 +53,12 @@ Follow the progress of the pull/build/start process in Docker Desktop or in Coli
 ### Upload the policy document to the vector store
 
 The first step of the scenario relies on the Retrieval-Augmented Generation (RAG) mechanism. To prepare for this, you will need to upload the policy document, split it into chunks, and store the chunks in the vector database.  
-Please follow the steps:
-- 
+Please follow the following steps:
+1. Visit [the demo UI](http://localhost:3000/)
+2. Click **Chatbot** on the top menu
+3. Click the **Documents** accordion on the left-hand-side
+4. Click the **IBU Policies document**  
+Steps 2-4 are illustrated on the image [Alt text](./1-DownloadPolicyDoc.png)
 
 ## Demo Execution
 - Visit 
