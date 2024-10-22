@@ -10,7 +10,7 @@ This demo, built on the **Athena Owl Agent Framework**, illustrates the power of
 
 1. [Prerequisites](#prerequisites)
 2. [Known Limitations](#known-limitations)
-3. [Demo Setup in a Few Easy Steps](#demo-setup-in-a-few-easy-steps)
+3. [Demo Setup](#demo-setup)
 4. [Reading and understanding the business policy document](#reading-and-understanding-the-business-policy-document)
 5. [Demo Script](#demo-script)
 6. [Conclusion](#conclusion)
@@ -38,15 +38,15 @@ Below are the prerequisites to install and run the demo:
 
 The following limitations are known and will be fixed promptly
 
-> - If you create rules in the ODM Decision Center and deploy them to the ODM Rule Execution Server, they will not show as justifications, even if they fire
-> - You'll have to manually grand read, write, and execute permissions to everyone (owner, group, and others) on the `decisions` directory
-> - Chat history is erased as soon as you leave the Chatbot page by clicking another tab
+> - If you create rules in the ODM Decision Center and deploy them to the ODM Rule Execution Server, they will execute as expected but will not show as justifications, even if they fire
+> - You'll have to manually grant read, write, and execute permissions on the `decisions` directory
+> - Chat history is erased when you leave the Chatbot page by clicking another tab
 
-## Demo Setup in a Few Easy Steps
+## Demo Setup
 
 ### Clone the bootstrap files from GitHub
 
-- Run `git clone https://github.com/AthenaDecisionSystems/athena-ibm-techxchange.git` from an empty directory.  This creates a subdirectory `athena-ibm-techxchange`
+> - Run `git clone https://github.com/AthenaDecisionSystems/athena-ibm-techxchange.git` from an empty directory.  This creates a subdirectory `athena-ibm-techxchange`
 
 ### Create your own environment file
 
@@ -69,46 +69,46 @@ IBM_WATSONX_APIKEY=
 
 ### Grant permission
 
-- In directory `athena-ibm-techxchange` type `chmod -R 777 decisions`
+> - In directory `athena-ibm-techxchange` type `chmod -R 777 decisions`
 
 ### Start the Docker images
 
-> 1. In directory `athena-ibm-techxchange` type `docker compose up -d`
-> 2. This will start the 5 containers required to run the demo 
-> 3. The first time you run that command, this will first pull the Docker images and create the containers
+> - In directory `athena-ibm-techxchange` type `docker compose up -d`
+> - This will start the 5 containers required to run the demo 
+> - The first time you run that command, this will first pull the Docker images and create the containers
 
-Follow the progress of the pull/build/start process in Docker Desktop or in Colima. As soon as the CPU stabilizes, you can proceed to the following steps.
+Follow the progress of the pull/build/start process in Docker Desktop or in Colima. As soon as the CPU stabilizes, you can proceed with the following tasks.
 
 ### Upload the policy document to the vector store
 
-The first step of the scenario relies on the Retrieval-Augmented Generation (RAG) mechanism. To prepare for this, you will need to upload the policy document, split it into chunks, and store the chunks in the vector database.  
+The first stage of the scenario relies on the Retrieval-Augmented Generation (RAG) mechanism. To prepare for this, you will need to upload the policy document, split it into chunks, and store the chunks in the vector database.  
 
-Please follow the following steps:
+Please follow the tasks below:
 
-> 1. Visit [the demo UI](http://localhost:3000/)
-> 2. Click on the **Chatbot** option located in the top menu
-> 3. Click on the **Documents** accordion located on the left-hand-side
-> 4. Click on the **IBU Policies document** link  
+> Task 1. Visit [the demo UI](http://localhost:3000/)  
+> Task 2. Click on the **Chatbot** option located in the top menu  
+> Task 3. Click on the **Documents** accordion located on the left-hand-side  
+> Task 4. Click on the **IBU Policies document** link  
 
-  The following image shows steps 2-4: 
+The following image shows tasks 2-4: 
 
   ![Please click](./images/1-DownloadPolicyDoc.png)  
 
-> 5. This opens the **Complaint Management Customer Retention Policy** pdf document in a new tab
-> 6. Click the Download link on your browser to store it locally
+> Task 5. This opens the **Complaint Management Customer Retention Policy** pdf document in a new tab  
+> Task 6. Click the Download link on your browser to store it locally
 
-  The following image shows steps 5-6: 
+  The following image shows tasks 5-6: 
 
   ![Please click](./images/2-PolicyDocumentPDF.png)
 
-> 7. Click on the **Documents** option located in the top menu
-> 8. Click on the **Select a file to upload** link
+> Task 7. Click on the **Documents** option located in the top menu  
+> Task 8. Click on the **Select a file to upload** link  
 
-The following image shows steps 7-8: 
+The following image shows tasks 7-8: 
 
   ![Please click](./images/3-UploadDoc.png)
 
-> 9. Select the `IBUpolicies.pdf` file that you just uploaded  
+> Task 9. Select the `IBUpolicies.pdf` file that you just uploaded  
 
 As a result, the document is divided into chunks and stored in the vector store, making it ready for retrieval. 
 
@@ -116,8 +116,8 @@ As a result, the document is divided into chunks and stored in the vector store,
 
 Check the `IBUpolicies.pdf` document. Pay special attention to the two following rules, that will be eligible in the demo scenario:
 
-- `AC-HOME-CONT-UP`. This rule stipulates that an upsell to the home policy should be proposed to customers under certain conditions
-- `AC-HOME-CONT-VOUCHER` - That rule states that the CSR should offer a voucher for additional services from an affiliate provider under certain conditions
+> - `AC-HOME-CONT-UP`. This rule stipulates that an upsell to the home policy should be proposed to customers under certain conditions
+> - `AC-HOME-CONT-VOUCHER` - That rule states that the CSR should offer a voucher for additional services from an affiliate provider under certain conditions
 
 ## Demo Script
 
@@ -129,17 +129,17 @@ Please follow the following script, as illustrated in the following image:
 
 ![Please click](./images/4-RAG.png)
 
-> 1. Visit [the demo UI](http://localhost:3000/)
-> 2. Click on the **Chatbot** option located in the top menu
-> 3. Make sure **IBU Insurance Agent 3.0 (Hybrid)** is selected in the **Agent** list on the left
-> 4. Make sure the **Settings** buttons show
+> Task 1. Visit [the demo UI](http://localhost:3000/)  
+> Task 2. Click on the **Chatbot** option located in the top menu  
+> Task 3. Make sure **IBU Insurance Agent 3.0 (Hybrid)** is selected in the **Agent** list on the left  
+> Task 4. Make sure the **Settings** buttons show
 
 >    - **Use File Search**: **Yes**  
 >    *This indicates that we are going to append the relevant chunks of the policy document to the prompt*
 >    - **Use Decision Services**: **No**  
 >    *This indicates that we are going to rely on the LLM (limitted) reasoning capabilities to handle the client complaint*
 
-> 5. In the text input box, type `demo`
+> Task 5. In the text input box, type `demo`
 
 This is a shortcut for typing the following message from the Customer Service Representative:
 
@@ -164,8 +164,8 @@ This is a shortcut for typing the following message from the Customer Service Re
 
 Press the **Enter** key
 
-> 6. As a first outcome, the CSR message shows in the chat window
-> 7. As a second outsome, the chatbot response shows in the chat window
+> Task 6. As a first outcome, the CSR message shows in the chat window  
+> Task 7. As a second outcome, the chatbot response shows in the chat window
 
 Below is the output we are getting. LLM do not behave deterministically so you might have something rather different:
 
@@ -218,7 +218,7 @@ This illustrates two major drawbacks when using LLMs to reason:
 
 In this second scenario of the demo, we rely on a hybrid combination of LLM and rule-based decision automation.
 
-Please follow the steps as in section [Chat in RAG/File Search only mode](#chat-in-ragfile-search-only-mode) but this time, make sure the **Settings** buttons show:
+Please follow the tasks from section [Chat in RAG/File Search only mode](#chat-in-ragfile-search-only-mode) but this time, make sure the **Settings** buttons show:
 
 >   - **Use File Search**: **Yes**  
 >   *This indicates that we are going to append the relevant chunks of the policy document to the prompt*
@@ -270,7 +270,7 @@ Here the chatbot did not call a Decision Service, but rather found the appropria
 
 ### What happened in this Hybrid AI mode?
 
-That second step demonstrated that delegating the complex decision to a rule-based Decision Service gives the right answer.
+That second stage demonstrated that delegating the complex decision to a rule-based Decision Service gives the right answer.
 
 ## Conclusion
 
