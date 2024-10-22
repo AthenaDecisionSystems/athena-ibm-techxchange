@@ -23,14 +23,8 @@ This demo, built on the **Athena Owl Agent Framework**, illustrates the power of
 ## Prerequisites
 Below are the prerequisites to install and run the demo:  
 
-> **UNDER PROGRESS BEGIN**
-
-> - Access to [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai).
->  - You can start a free trial by following the **Start your free trial** link in https://www.ibm.com/products/watsonx-ai. If you don't have an IBM Cloud account yet, you will be prompted to create one.  
-> 
-> **UNDER PROGRESS END**
-
 - [Git](https://git-scm.com/) client in order to get the bootstrap files on your machine.
+- Some API keys, including access to [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai), see below for all the details.
 - [Docker Compose](https://docs.docker.com/compose/) in order to run the demo, which is a multi-container application.
   - On Windows, the simplest and recommended approach is to get [Docker Desktop](https://docs.docker.com/desktop/install/windows-install/) as it includes both Docker Engine and Docker Compose required to run the demo.
   - On Mac you can use either [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) or [Colima](https://github.com/abiosoft/colima).
@@ -50,23 +44,25 @@ The following limitations are known and will be fixed promptly
 
 > - Run `git clone https://github.com/AthenaDecisionSystems/athena-ibm-techxchange.git` from an empty directory.  This creates a subdirectory `athena-ibm-techxchange`
 
-### Create your own environment file
-
-> **UNDER PROGRESS BEGIN**
+### Create your own `.env` environment file
 
 > - Copy the provided `athena-ibm-techxchange\#.env#` file to `athena-ibm-techxchange\.env`
-> - Open that file and provide your own value for the following
-> 1. **Create an IBM watsonx.ai account**  
->    Visit the [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai) page and follow the links to set up a Cloud instance.
+> - Edit that file and provide your own values for the API keys.
+> 1. **IBM Watsonx API keys**  
+>    Accessing IBM Watsonx.ai foundation models requires 3 pieces of information.
+>    - `WATSONX_APIKEY` and `IBM_WATSONX_APIKEY`: your IBM Cloud user API key. (The same key appears twice.)
+>    - `IBM_WATSON_PROJECT_ID`: one IBM Watsonx.ai project id.
+>    - `IBM_WATSONX_URL`: your IBM Datacenter Endpoint URL.
 >
-> 2. **Generate an API key**  
->   In your IBM Cloud account, go to `Profile and settings` and generate an API key => WATSONX_APIKEY=
-IBM_WATSONX_APIKEY=
->
-> 4. **Copy your watsonx.ai configuration parameters**  
-> Create a new watsonx.ai project and copy IBM_WATSONX_URL and IBM_WATSON_PROJECT_ID=
->
-> **UNDER PROGRESS END**
+>    If you're new to Watsonx.ai, getting started is easy. Visit the [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai) page, where you'll find everything you need to set up a Cloud instance. From there, you can begin a free trial. If you don't have an IBM Cloud account, you'll be guided to create one during the setup process.  
+>    The complete process to obtains those 3 elements is described on this page: [IBM Watsonx API keys](ibm-watsonx-api-keys.md).
+>    
+> 2. **OpenAI API key**  
+>    To get an OpenAI API key, follow these steps:
+>    - Sign up / Log in: go to the [OpenAI Platform](https://platform.openai.com/) and create an account if you don't have one.  
+>    - Access API Settings: once logged in, click on your profile icon in the top right corner, then select `View API Keys` from the dropdown menu.
+>    - Generate a new API key: click `Create new secret key`. This will generate a new key that you can copy. You will only be able to view the key once for security reasons, so make sure you save it immediately.
+>    - Paste it in your `.env` file just after `OPENAI_API_KEY=`.
 
 
 ### Grant permission
