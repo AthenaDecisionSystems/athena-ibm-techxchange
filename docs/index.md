@@ -1,4 +1,6 @@
 # Athena IBU-Insurance Demo Quickstart
+Businesses must follow regulations, internal policies, contract terms, and best practices when making key decisions and responding to customers. In this demo, we'll show you how Hybrid AI can help achieve this.
+
 This demo showcases an Insurance Customer Service scenario where a chatbot, relying solely on pure LLM technology, including Retrieval-Augmented Generation (RAG), produces inaccurate responses that do not align with the insurance carrier's policy.
 
 It then demonstrates the solution: An agentic architecture that orchestrates a rule-based decision service built with IBM Operational Decision Manager ([IBM ODM](https://www.ibm.com/fr-fr/products/operational-decision-manager)) and LLM-based agents available through [watsonx.ai](https://www.ibm.com/products/watsonx-ai).  
