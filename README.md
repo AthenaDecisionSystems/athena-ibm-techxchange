@@ -1,24 +1,3 @@
-## Athena IBU Insurance Demonstration
+## [Athena IBU Insurance Demonstration](https://athenadecisionsystems.github.io/athena-ibm-techxchange)
 
-
-## Pre-requisites
-
-
-## Execute
-
-* Start the solution
-```
-docker compose up -d
-```
-* URLs
-
-[User Interface](http://localhost:3000)
-
-* Stop the solution
-
-```
-docker compose down
-```
-
-
-## Scenario
+[See demonstration instructions]()https://athenadecisionsystems.github.io/athena-ibm-techxchange).

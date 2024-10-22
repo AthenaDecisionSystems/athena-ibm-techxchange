@@ -20,28 +20,36 @@ This demo, built on the **Athena Owl Agent Framework**, illustrates the power of
 Below are the prerequisites to install and run the demo:  
 
 > **UNDER PROGRESS BEGIN**
+
 > - Access to [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai).
 >  - You can start a free trial by following the **Start your free trial** link in https://www.ibm.com/products/watsonx-ai. If you don't have an IBM Cloud account yet, you will be prompted to create one.  
 > 
 > **UNDER PROGRESS END**
 
-- [Git](https://git-scm.com/) in order to get the bootstrap files on your machine
+- [Git](https://git-scm.com/) client in order to get the bootstrap files on your machine.
 - [Docker Compose](https://docs.docker.com/compose/) in order to run the demo, which is a multi-container application.
-  - On Windows, the simplest and recommended approach is to get [Docker Desktop](https://docs.docker.com/desktop/install/windows-install/) as it includes both Docker Engine and Docker Compose required to run the demo
-  - On Mac you can use either [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) or [Colima](https://github.com/abiosoft/colima)
+  - On Windows, the simplest and recommended approach is to get [Docker Desktop](https://docs.docker.com/desktop/install/windows-install/) as it includes both Docker Engine and Docker Compose required to run the demo.
+  - On Mac you can use either [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) or [Colima](https://github.com/abiosoft/colima).
 - A web browser. The demo has been thoroughly tested using Google Chrome.
 
-## Known Limitations  
+## Known Limitations
+
 The following limitations are known and will be fixed promptly
+
 > - If you create rules in the ODM Decision Center and deploy them to the ODM Rule Execution Server, they will not show as justifications, even if they fire
 > - You'll have to manually grand read, write, and execute permissions to everyone (owner, group, and others) on the `decisions` directory
 > - Chat history is erased as soon as you leave the Chatbot page by clicking another tab
 
 ## Demo Setup in a Few Easy Steps
+
 ### Clone the bootstrap files from GitHub
+
 - Run `git clone https://github.com/AthenaDecisionSystems/athena-ibm-techxchange.git` from an empty directory.  This creates a subdirectory `athena-ibm-techxchange`
+
 ### Create your own environment file
+
 > **UNDER PROGRESS BEGIN**
+
 > - Copy the provided `athena-ibm-techxchange\#.env#` file to `athena-ibm-techxchange\.env`
 > - Open that file and provide your own value for the following
 > 1. **Create an IBM watsonx.ai account**  
@@ -58,35 +66,45 @@ IBM_WATSONX_APIKEY=
 
 
 ### Grant permission
+
 - In directory `athena-ibm-techxchange` type `chmod -R 777 decisions`
 
 ### Start the Docker images
+
 > 1. In directory `athena-ibm-techxchange` type `docker compose up -d`
 > 2. This will start the 5 containers required to run the demo 
 > 3. The first time you run that command, this will first pull the Docker images and create the containers
 
-Follow the progress of the pull/build/start process in Docker Desktop or in Colima. As soon as the CPU stabilizes, you can proceed to the following step.
+Follow the progress of the pull/build/start process in Docker Desktop or in Colima. As soon as the CPU stabilizes, you can proceed to the following steps.
 
 ### Upload the policy document to the vector store
 
 The first step of the scenario relies on the Retrieval-Augmented Generation (RAG) mechanism. To prepare for this, you will need to upload the policy document, split it into chunks, and store the chunks in the vector database.  
+
 Please follow the following steps:
+
 > 1. Visit [the demo UI](http://localhost:3000/)
 > 2. Click on the **Chatbot** option located in the top menu
 > 3. Click on the **Documents** accordion located on the left-hand-side
 > 4. Click on the **IBU Policies document** link  
 
-The following image shows steps 2-4: [Please click](./1-DownloadPolicyDoc.png)  
+  The following image shows steps 2-4: 
+
+  ![Please click](./images/1-DownloadPolicyDoc.png)  
 
 > 5. This opens the **Complaint Management Customer Retention Policy** pdf document in a new tab
 > 6. Click the Download link on your browser to store it locally
 
-The following image shows steps 5-6: [Please click](./2-PolicyDocumentPDF.png)
+  The following image shows steps 5-6: 
+
+  ![Please click](./images/2-PolicyDocumentPDF.png)
 
 > 7. Click on the **Documents** option located in the top menu
 > 8. Click on the **Select a file to upload** link
 
-The following image shows steps 7-8: [Please click](./3-UploadDoc.png)
+The following image shows steps 7-8: 
+
+  ![Please click](./images/3-UploadDoc.png)
 
 > 9. Select the `IBUpolicies.pdf` file that you just uploaded  
 
@@ -95,6 +113,7 @@ As a result, the document is divided into chunks and stored in the vector store,
 ## Reading and understanding the business policy document
 
 Check the `IBUpolicies.pdf` document. Pay special attention to the two following rules, that will be eligible in the demo scenario:
+
 - `AC-HOME-CONT-UP`. This rule stipulates that an upsell to the home policy should be proposed to customers under certain conditions
 - `AC-HOME-CONT-VOUCHER` - That rule states that the CSR should offer a voucher for additional services from an affiliate provider under certain conditions
 
@@ -104,15 +123,20 @@ Check the `IBUpolicies.pdf` document. Pay special attention to the two following
 
 In this first scenario of the demo, we will rely on pure LLM mechanisms and figure out what is going to happen.
 
-Please follow the following script, as illustrated in the following image: [Please click](./4-RAG.png)
+Please follow the following script, as illustrated in the following image: 
+
+![Please click](./images/4-RAG.png)
+
 > 1. Visit [the demo UI](http://localhost:3000/)
 > 2. Click on the **Chatbot** option located in the top menu
 > 3. Make sure **IBU Insurance Agent 3.0 (Hybrid)** is selected in the **Agent** list on the left
 > 4. Make sure the **Settings** buttons show
->   - **Use File Search**: **Yes**  
->   *This indicates that we are going to append the relevant chunks of the policy document to the prompt*
->   - **Use Decision Services**: **No**  
->   *This indicates that we are going to rely on the LLM (limitted) reasoning capabilities to handle the client complaint*
+
+>    - **Use File Search**: **Yes**  
+>    *This indicates that we are going to append the relevant chunks of the policy document to the prompt*
+>    - **Use Decision Services**: **No**  
+>    *This indicates that we are going to rely on the LLM (limitted) reasoning capabilities to handle the client complaint*
+
 > 5. In the text input box, type `demo`
 
 This is a shortcut for typing the following message from the Customer Service Representative:
@@ -193,18 +217,23 @@ This illustrates two major drawbacks when using LLMs to reason:
 In this second scenario of the demo, we rely on a hybrid combination of LLM and rule-based decision automation.
 
 Please follow the steps as in section [Chat in RAG/File Search only mode](#chat-in-ragfile-search-only-mode) but this time, make sure the **Settings** buttons show:
+
 >   - **Use File Search**: **Yes**  
 >   *This indicates that we are going to append the relevant chunks of the policy document to the prompt*
 >   - **Use Decision Services**: **Yes**  
 >   *This indicates that we are going to rely on IBM ODM ceterministice reasoning capabilities to handle the client complaint*  
 
-This time, we are getting the expected behavior, as shown on the following image: [Please click](./5-RAG-ODM.png).
+This time, we are getting the expected behavior, as shown on the following image: 
+
+![Please click](./images/5-RAG-ODM.png).
 
 In addition to that, two links show:  
 - The **Justification** link. Clicking it shows the description of the rules that executed as in the Policy Document, as shown in the following image: [Please click](./6-JUSTIFICATION.png)
 
 
-- The **Rules** link. Clicking it shows the rules as they are entered and maintained in IBM ODM, as shown in the following image: [Please click](./7-RULES.png)  
+- The **Rules** link. Clicking it shows the rules as they are entered and maintained in IBM ODM, as shown in the following image: 
+
+![Please click](./images/7-RULES.png)  
 
 Ask a subsequent question:
 
@@ -233,7 +262,7 @@ Here the chatbot did not call a Decision Service, but rather found the appropria
 > **Home repair**
 > 1. Mr. Handyman, Address: 1234 Main St, Suite 100, Anytown, USA 12345
 > 2. Home Repair Services, Address: 5678 Elm St, Springfield, USA 67890
-> 3. HOMEE, Address: 9101 Oak Ave, Suite 200, Metropolis, USA 23456
+> 3. HOME, Address: 9101 Oak Ave, Suite 200, Metropolis, USA 23456
 
 
 
@@ -244,6 +273,7 @@ That second step demonstrated that delegating the complex decision to a rule-bas
 ## Conclusion
 
 That demo showed that by integrating a rule-based Decision Service in an agentic architecture, we are getting the best of both worlds:
+
 - **Rule-based Decision Services** allow correct, reproducible, explainable contextual decisions based on rules that can be understood and maintained by Business Analysts. They are the right approach to implementing highly contextual decision services that implement best practices, policies and regulations.
 - **LLMs** are key to allow agency, seamless and fluid communication with the Humans 
 
@@ -251,7 +281,8 @@ That demo showed that by integrating a rule-based Decision Service in an agentic
 
 ## Call to Action
 
-> Reach out to us, as we'd love to have a conversation
+Reach out to us, as we'd love to have a conversation:
+
 >  - [Contact us](https://athenadecisions.com/contact-us)
 >  - Even better, [Schedule a 30-minute conversation](https://calendly.com/harley-6-ar/30min?month=2024-10)
 >  - If you are at TechXChange 2024, reach out to Harley Davis on [LinkedIn](https://www.linkedin.com/in/harleydavis/)
