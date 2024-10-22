@@ -5,6 +5,7 @@ It then demonstrates the solution: An agentic architecture that orchestrates a r
 
 This demo, built on the **Athena Owl Agent Framework**, illustrates the power of **Hybrid AI** that combines Gen AI and Symbolic, rule-based AI.
 
+<!-- Commenting out the TOC as MkDocs creates one automatically 
 ## Table of Contents
 
 1. [Prerequisites](#prerequisites)
@@ -14,6 +15,7 @@ This demo, built on the **Athena Owl Agent Framework**, illustrates the power of
 5. [Demo Script](#demo-script)
 6. [Conclusion](#conclusion)
 6. [Call to Action](#call-to-action)
+-->
 
 
 ## Prerequisites
