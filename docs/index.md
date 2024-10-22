@@ -81,9 +81,9 @@ Follow the progress of the pull/build/start process in Docker Desktop or in Coli
 
 ### Upload the policy document to the vector store
 
-The first stage of the scenario relies on the Retrieval-Augmented Generation (RAG) mechanism. To prepare for this, you will need to upload the policy document, split it into chunks, and store the chunks in the vector database.  
+The first stage of the demo relies on the Retrieval-Augmented Generation (RAG) mechanism. To prepare for this, you will need to upload the policy document, split it into chunks, and store the chunks in the vector database.  
 
-Please follow the tasks below:
+Please execute the tasks below:
 
 > Task 1. Visit [the demo UI](http://localhost:3000/)  
 > Task 2. Click on the **Chatbot** option located in the top menu  
@@ -121,9 +121,9 @@ Check the `IBUpolicies.pdf` document. Pay special attention to the two following
 
 ## Demo Script
 
-### Chat in RAG/File Search only mode
+### Stage I - Chat in RAG/File Search only mode
 
-In this first scenario of the demo, we will rely on pure LLM mechanisms and figure out what is going to happen.
+In this first stage of the demo (Pure Gen AI), we will rely on pure LLM mechanisms and figure out what is going to happen.
 
 Please follow the following script, as illustrated in the following image: 
 
@@ -141,7 +141,7 @@ Please follow the following script, as illustrated in the following image:
 
 > Task 5. In the text input box, type `demo`
 
-This is a shortcut for typing the following message from the Customer Service Representative:
+`demo` is a shortcut for typing the following message from the Customer Service Representative:
 
 > ***User***
 >> *I received this email from my customer. What should I answer?*
@@ -167,7 +167,7 @@ Press the **Enter** key
 > Task 6. As a first outcome, the CSR message shows in the chat window  
 > Task 7. As a second outcome, the chatbot response shows in the chat window
 
-Below is the output we are getting. LLM do not behave deterministically so you might have something rather different:
+Below is the output we are getting. LLMs do not behave deterministically so you might have something slightly different:
 
 > ***Chatbot***
 >> **Step #1**: The identified motive of Sonya Smith's message is UnsatisfiedWithAppliedCoverages. She is disappointed because the damage to her carpet, which she expected to be covered, is not included in her policy.
@@ -184,57 +184,65 @@ Below is the output we are getting. LLM do not behave deterministically so you m
 >>
 >>Recommendations: I recommend reaching out to Sonya to explain the specific reasons why the carpet damage is not covered under her current policy. It may be beneficial to review her policy details with her and discuss potential options for additional coverage in the future. Additionally, offering to assist her in understanding her policy better could help alleviate her dissatisfaction and potentially retain her as a client.
 
-### What happened in this pure LLM mode?
+The outcome of Steps #1 to #3 is correct but the LLM failed in Step #4 to recommend the CSR to offer a voucher while the conditions of rule `AC-HOME-CONT-VOUCHER` apply:
 
-The agentic architecture supporting the chatbot guarantees the following process flow:
+> `A voucher with a market value of up to 200€ should be offered to customers in the following
+situation:
+> - Their policy covers only home structures, not the content ;
+> - The reason of their interaction is that they are not satisfied with the coverage;
+> - The customer policy has more than 180 days
+> - Their CLTV percentile is at least 60`
+
+Let's try and challenges Step 4:  
+> Task 8. Type the following prompt:
+
+> ***User***  
+>> Doesn't rule AC-HOME-CONT-VOUCHER apply here?  
+
+In our case the chatbot did recognize its omission the first time:  
+> ***Chatbot***  
+>> ...  
+>> **Step #4**: Recommendations: Given that the **AC-HOME-CONT-VOUCHER** rule applies here, I recommend offering Sonya a voucher with a market value of up to 200€. This is appropriate because her policy covers only home structures, she is dissatisfied with the coverage, her policy has been active for more than 180 days, and we should check her CLTV percentile to ensure it meets the requirement of at least 60. This gesture could help alleviate her dissatisfaction and potentially retain her as a client. Additionally, I suggest explaining the specific reasons why the carpet damage is not covered under her current policy and discussing potential options for additional coverage in the future.
+
+### What did Stage I show?
+
+Stage I first demonstrated that the agentic architecture supporting the chatbot guarantees some level of control and the following process flow:
 > - **Step #1**: Identify the motive of the customer's request
 > - **Step #2**: Assess the customer's risk of churn
 > - **Step #3**: Get the customer's detail from the external customer database
 > - **Step #4**: By reconcilliating the insight extracted from the email (Steps #1 and #2) and customer database data (Step #3), determine what rules from the policy document apply
 
-While the outcome of Steps #1 to #3 is correct, the LLM failed in Step #4 to recommend the CSR to offer a voucher while the conditions of rule AC-HOME-CONT-VOUCHER apply:
+But it also illustrated two major drawbacks when using LLMs to reason in Step #4:  
+>- Hallucinations  
+>- Non reproducibility  
 
-> A voucher with a market value of up to 200€ should be offered to customers in the following
-situation:
-> - Their policy covers only home structures, not the content ;
-> - The reason of their interaction is that they are not satisfied with the coverage;
-> - The customer policy has more than 180 days
-> - Their CLTV percentile is at least 60
+**We need a solution!**
 
-If the user challenges Step 4, the chatbot recognizes its omission:
+### Stage II - Chat in RAG/File Search + Use Decision Service mode
 
-> ***User***  
->> Doesn't rule AC-HOME-CONT-VOUCHER apply here?  
-> 
-> ***Chatbot***  
->> ...  
->> **Step #4**: Recommendations: Given that the **AC-HOME-CONT-VOUCHER** rule applies here, I recommend offering Sonya a voucher with a market value of up to 200€. This is appropriate because her policy covers only home structures, she is dissatisfied with the coverage, her policy has been active for more than 180 days, and we should check her CLTV percentile to ensure it meets the requirement of at least 60. This gesture could help alleviate her dissatisfaction and potentially retain her as a client. Additionally, I suggest explaining the specific reasons why the carpet damage is not covered under her current policy and discussing potential options for additional coverage in the future.
+In this second stage of the demo (Hybrid AI), we rely on a hybrid combination of LLM and rule-based decision automation to run Step #4.
 
-This illustrates two major drawbacks when using LLMs to reason:
-- Hallucinations
-- Non reproducibility
-
-### Chat in RAG/File Search + Use Decision Service mode
-
-In this second scenario of the demo, we rely on a hybrid combination of LLM and rule-based decision automation.
-
-Please follow the tasks from section [Chat in RAG/File Search only mode](#chat-in-ragfile-search-only-mode) but this time, make sure the **Settings** buttons show:
+Please follow the tasks from section [Stage I - Chat in RAG/File Search only mode](#stage-i---chat-in-ragfile-search-only-mode) but this time, make sure the **Settings** buttons show:
 
 >   - **Use File Search**: **Yes**  
 >   *This indicates that we are going to append the relevant chunks of the policy document to the prompt*
 >   - **Use Decision Services**: **Yes**  
->   *This indicates that we are going to rely on IBM ODM ceterministice reasoning capabilities to handle the client complaint*  
+>   *This indicates that we are going to rely on IBM ODM deterministic reasoning capabilities to handle the client complaint*  
 
 This time, we are getting the expected behavior, as shown on the following image: 
 
 ![Please click](./images/5-RAG-ODM.png).
 
 In addition to that, two links show:  
-- The **Justification** link. Clicking it shows the description of the rules that executed as in the Policy Document, as shown in the following image: [Please click](./6-JUSTIFICATION.png)
 
-
-- The **Rules** link. Clicking it shows the rules as they are entered and maintained in IBM ODM, as shown in the following image: 
-
+- The **Justification** link. Clicking this link displays the rules' descriptions exactly as they appear in the Policy Document, as illustrated in the image below:
+<br>
+<br>
+![Please click](./images/6-JUSTIFICATION.png)  
+<br>
+<br>
+- The **Rules** link. Clicking that link shows the rules as they are entered and maintained in IBM ODM, as shown in the following image:  
+<br>
 ![Please click](./images/7-RULES.png)  
 
 Ask a subsequent question:
@@ -266,18 +274,20 @@ Here the chatbot did not call a Decision Service, but rather found the appropria
 > 2. Home Repair Services, Address: 5678 Elm St, Springfield, USA 67890
 > 3. HOME, Address: 9101 Oak Ave, Suite 200, Metropolis, USA 23456
 
+### What did Stage II show?  
 
-
-### What happened in this Hybrid AI mode?
-
-That second stage demonstrated that delegating the complex decision to a rule-based Decision Service gives the right answer.
+That second stage demonstrated that integrating the rule-based Decision Service in the agentic architecture:  
+>- Ensures that the right, context-aware, recommendation is given to the CSR  
+>- Provides a deterministic justification based on the Policy Document and that makes sense to the Customer Service Representative  
+>- Provides the list of rules that fired in the IBM ODM engine for both tuning and auditing purposes  
+>- Allows to take advantage of Gen AI mechanisms, such as RAG, when it makes sense as in the list of affiliate providers example
 
 ## Conclusion
 
 That demo showed that by integrating a rule-based Decision Service in an agentic architecture, we are getting the best of both worlds:
 
-- **Rule-based Decision Services** allow correct, reproducible, explainable contextual decisions based on rules that can be understood and maintained by Business Analysts. They are the right approach to implementing highly contextual decision services that implement best practices, policies and regulations.
-- **LLMs** are key to allow agency, seamless and fluid communication with the Humans 
+>- **Rule-based Decision Services** allow correct, reproducible, explainable contextual decisions based on rules that can be understood and maintained by Business Analysts. They are the right approach to implementing highly contextual decision services that implement best practices, policies and regulations.
+>- **LLMs** are key to allow agency, seamless and fluid communication with the Humans 
 
 **Combining them is what Hybrid AI is all about and allows to build robust chatbots, chatbots that work!**
 
@@ -288,5 +298,5 @@ Reach out to us, as we'd love to have a conversation:
 >  - [Contact us](https://athenadecisions.com/contact-us)
 >  - Even better, [Schedule a 30-minute conversation](https://calendly.com/harley-6-ar/30min?month=2024-10)
 >  - If you are at TechXChange 2024, reach out to Harley Davis on [LinkedIn](https://www.linkedin.com/in/harleydavis/)
->
->Create your own demos using the **Athena Owl Agent open-source Framework** and even contribute to its development. The framework will be made publicly available in the coming days.
+
+Create your own demos using the **Athena Owl Agent open-source Framework** and even contribute to its development. The framework will be made publicly available in the coming days.
