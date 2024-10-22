@@ -53,7 +53,8 @@ services:
       - QUARKUS_DATASOURCE_PASSWORD=p0stgrespwd
       - QUARKUS_DATASOURCE_JDBC_URL=jdbc:postgresql://postgres:5432/insurancedb
   postgres:
-    image: postgres:latest
+    image: postgres:16
+    #image: postgres:latest
     container_name: postgres
     hostname: postgres
     restart: always

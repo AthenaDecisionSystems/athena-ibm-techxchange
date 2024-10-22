@@ -1,0 +1,26 @@
+## Basic prompt - type "demo" or this:
+
+I received this email from my customer. What should I answer?
+From:  Sonya Smith (sonya.smith@thecure.org)
+To:  support@ibuinsurance.com
+Subject:  Covering my carpet cleaning
+
+Dear IBU,
+
+During the recent water leak at my house (cf claim 250303), my expensive Moroccan carpet was damaged by the water.  You told me that this damage is not covered by my policy. I’m very disappointed.  What do you propose?
+
+Thank you!
+
+Yours,
+
+Sonya Smith
+
+## RAG scenario - follow-on prompt
+
+Doesn't rule AC-HOME-CONT-VOUCHER apply here?
+
+## Rules + RAG scenario - follow-on prompt
+
+Where can Sonya find such an affiliate? She lives in Nevada.
+
+List all the affiliated providers
