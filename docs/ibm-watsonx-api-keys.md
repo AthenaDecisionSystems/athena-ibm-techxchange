@@ -1,6 +1,6 @@
-# How to Create a Watsonx API Key
+# How to Create your Watsonx API Keys
 
-Follow these steps to create a Watsonx API key:
+Follow these steps to create your Watsonx API keys:
 
 ### 1. Create a Watsonx.ai Account
    - Visit [Watsonx.ai](https://watsonx.ai) and click **Start your free trial**.
