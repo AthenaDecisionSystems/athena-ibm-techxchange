@@ -47,24 +47,24 @@ The following limitations are known and will be fixed promptly
 ### Create your own `.env` environment file
 
 > - Copy the provided `athena-ibm-techxchange\#.env#` file to `athena-ibm-techxchange\.env`
-> - Edit that file and provide your own values for the API keys.
+> - Edit that file and provide your own values for the API keys.  
 > 
-> 1. **IBM Watsonx API keys**  
->    Accessing IBM Watsonx.ai foundation models requires 3 pieces of information:
+>   1. **IBM Watsonx API keys**  
+>      Accessing IBM Watsonx.ai foundation models requires 3 pieces of information:
 >      - `WATSONX_APIKEY` and `IBM_WATSONX_APIKEY`: your IBM Cloud user API key. (The same key appears twice in the `.env` file.)
 >      - `IBM_WATSON_PROJECT_ID`: one IBM Watsonx.ai project id.
 >      - `IBM_WATSONX_URL`: your IBM Datacenter endpoint URL.
->
->    If you're new to Watsonx.ai, getting started is easy. Visit the [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai) page, where you'll find everything you need to set up a Cloud instance. From there, you can begin a free trial. If you don't have an IBM Cloud account, you'll be guided to create one during the setup process.
->    
->    The full process for obtaining these three elements is outlined on this page: [IBM Watsonx API keys](ibm-watsonx-api-keys.md)
 > 
-> 2. **OpenAI API key**  
->    To get an OpenAI API key, follow these steps:
->    - Sign up / Log in: go to the [OpenAI Platform](https://platform.openai.com/) and create an account if you don't have one.  
->    - Access API Settings: once logged in, click on your profile icon in the top right corner, then select `View API Keys` from the dropdown menu.
->    - Generate a new API key: click `Create new secret key`. This will generate a new key that you can copy. You will only be able to view the key once for security reasons, so make sure you save it immediately.
->    - Paste it in your `.env` file just after `OPENAI_API_KEY=`.
+>      If you're new to Watsonx.ai, getting started is easy. Visit the [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai) page, where you'll find everything you need to set up a Cloud instance. From there, you can begin a free trial. If you don't have an IBM Cloud account, you'll be guided to create one during the setup process.
+>    
+>      The full process for obtaining these three elements is outlined on this page: [IBM Watsonx API keys](ibm-watsonx-api-keys.md)
+> 
+>   2. **OpenAI API key**  
+>      To get an OpenAI API key, follow these steps:
+>      - Sign up / Log in: go to the [OpenAI Platform](https://platform.openai.com/) and create an account if you don't have one.  
+>      - Access API Settings: once logged in, click on your profile icon in the top right corner, then select `View API Keys` from the dropdown menu.
+>      - Generate a new API key: click `Create new secret key`. This will generate a new key that you can copy. You will only be able to view the key once for security reasons, so make sure you save it immediately.
+>      - Paste it in your `.env` file just after `OPENAI_API_KEY=`.
 
 
 ### Grant permission
