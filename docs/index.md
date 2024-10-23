@@ -48,15 +48,17 @@ The following limitations are known and will be fixed promptly
 
 > - Copy the provided `athena-ibm-techxchange\#.env#` file to `athena-ibm-techxchange\.env`
 > - Edit that file and provide your own values for the API keys.
+> 
 > 1. **IBM Watsonx API keys**  
->    Accessing IBM Watsonx.ai foundation models requires 3 pieces of information.
->    - `WATSONX_APIKEY` and `IBM_WATSONX_APIKEY`: your IBM Cloud user API key. (The same key appears twice.)
->    - `IBM_WATSON_PROJECT_ID`: one IBM Watsonx.ai project id.
->    - `IBM_WATSONX_URL`: your IBM Datacenter Endpoint URL.
+>    Accessing IBM Watsonx.ai foundation models requires 3 pieces of information:
+>      - `WATSONX_APIKEY` and `IBM_WATSONX_APIKEY`: your IBM Cloud user API key. (The same key appears twice in the `.env` file.)
+>      - `IBM_WATSON_PROJECT_ID`: one IBM Watsonx.ai project id.
+>      - `IBM_WATSONX_URL`: your IBM Datacenter endpoint URL.
 >
->    If you're new to Watsonx.ai, getting started is easy. Visit the [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai) page, where you'll find everything you need to set up a Cloud instance. From there, you can begin a free trial. If you don't have an IBM Cloud account, you'll be guided to create one during the setup process.  
->    The complete process to obtains those 3 elements is described on this page: [IBM Watsonx API keys](ibm-watsonx-api-keys.md).
+>    If you're new to Watsonx.ai, getting started is easy. Visit the [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai) page, where you'll find everything you need to set up a Cloud instance. From there, you can begin a free trial. If you don't have an IBM Cloud account, you'll be guided to create one during the setup process.
 >    
+>    The full process for obtaining these three elements is outlined on this page: [IBM Watsonx API keys](ibm-watsonx-api-keys.md)
+> 
 > 2. **OpenAI API key**  
 >    To get an OpenAI API key, follow these steps:
 >    - Sign up / Log in: go to the [OpenAI Platform](https://platform.openai.com/) and create an account if you don't have one.  
