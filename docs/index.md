@@ -50,18 +50,18 @@ The following limitations are known and will be fixed promptly
 > - Edit that file and provide your own values for the API keys.  
 > 
 > - IBM watsonx.ai API keys  
->>Accessing IBM watsonx.ai foundation models requires the following keys:  
->>- `WATSONX_APIKEY` and `IBM_WATSONX_APIKEY`: your IBM Cloud user API key. (The same key appears twice in the `.env` file.)  
->>- `IBM_WATSON_PROJECT_ID`: an IBM watsonx.ai project id  
->>- `IBM_WATSONX_URL`: your IBM Datacenter endpoint URL
+> Accessing IBM watsonx.ai foundation models requires the following keys:  
+>> - `WATSONX_APIKEY` and `IBM_WATSONX_APIKEY`: your IBM Cloud user API key. (The same key appears twice in the `.env` file.)  
+>> - `IBM_WATSON_PROJECT_ID`: an IBM watsonx.ai project id  
+>> - `IBM_WATSONX_URL`: your IBM Datacenter endpoint URL
 >>
->>If you're new to watsonx.ai, it's simple to get started. Head over to the [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai) page, where you'll find all the resources needed to set up a Cloud instance. From there, you can begin a free trial. If you don't already have an IBM Cloud account, the setup process will guide you through creating one.  
->>The detailed process for obtaining these keys is outlined on this page: [IBM watsonx API keys](ibm-watsonx-api-keys.md)
+>If you're new to watsonx.ai, it's simple to get started. Head over to the [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai) page, where you'll find all the resources needed to set up a Cloud instance. From there, you can begin a free trial. If you don't already have an IBM Cloud account, the setup process will guide you through creating one.  
+>>The detailed process for obtaining these keys is described on this page: [How to Create Your watsonx.ai API Keys](ibm-watsonx-api-keys.md)
 > 
 > - OpenAI API key  
->>To get an OpenAI API key, follow these steps:  
+>To get an OpenAI API key, follow these steps:  
 >>- Sign up / Log in: go to the [OpenAI Platform](https://platform.openai.com/) and create an account if you don't have one.    
->>- Access API Settings: once logged in, click on your profile icon in the top right corner, then select `View API Keys` from the dropdown menu.  
+>>- Access API Settings: once logged in, click on your profile icon in the top right corner, then select **View API Keys** from the dropdown menu.  
 >>- Generate a new API key: click **Create new secret key**. This will generate a new key that you can copy. You will only be able to view the key once for security reasons, so make sure you save it immediately.  
 >>- Paste it in your `.env` file just after `OPENAI_API_KEY=`.
 
