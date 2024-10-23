@@ -23,12 +23,12 @@ This demo, built on the **Athena Owl Agent Framework**, illustrates the power of
 ## Prerequisites
 Below are the prerequisites to install and run the demo:  
 
-- [Git](https://git-scm.com/) client in order to get the bootstrap files on your machine.
-- Some API keys, including access to [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai), see below for all the details.
-- [Docker Compose](https://docs.docker.com/compose/) in order to run the demo, which is a multi-container application.
-  - On Windows, the simplest and recommended approach is to get [Docker Desktop](https://docs.docker.com/desktop/install/windows-install/) as it includes both Docker Engine and Docker Compose required to run the demo.
-  - On Mac you can use either [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) or [Colima](https://github.com/abiosoft/colima).
-- A web browser. The demo has been thoroughly tested using Google Chrome.
+>- [Git](https://git-scm.com/) client in order to get the bootstrap files on your machine.
+>- Some API keys, including access to [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai), see below for all the details.
+>- [Docker Compose](https://docs.docker.com/compose/) in order to run the demo, which is a multi-container application.
+>      - On Windows, the simplest and recommended approach is to get [Docker Desktop](https://docs.docker.com/desktop/install/windows-install/) as it includes both Docker Engine and Docker Compose required to run the demo.
+>      - On Mac you can use either [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) or [Colima](https://github.com/abiosoft/colima).
+>- A web browser. The demo has been thoroughly tested using Google Chrome.
 
 ## Known Limitations
 
@@ -49,22 +49,21 @@ The following limitations are known and will be fixed promptly
 > - Copy the provided `athena-ibm-techxchange\#.env#` file to `athena-ibm-techxchange\.env`
 > - Edit that file and provide your own values for the API keys.  
 > 
->   1. **IBM Watsonx API keys**  
->      Accessing IBM Watsonx.ai foundation models requires 3 pieces of information:
->      - `WATSONX_APIKEY` and `IBM_WATSONX_APIKEY`: your IBM Cloud user API key. (The same key appears twice in the `.env` file.)
->      - `IBM_WATSON_PROJECT_ID`: one IBM Watsonx.ai project id.
->      - `IBM_WATSONX_URL`: your IBM Datacenter endpoint URL.
+> - IBM watsonx.ai API keys  
+>>Accessing IBM watsonx.ai foundation models requires the following keys:  
+>>- `WATSONX_APIKEY` and `IBM_WATSONX_APIKEY`: your IBM Cloud user API key. (The same key appears twice in the `.env` file.)  
+>>- `IBM_WATSON_PROJECT_ID`: an IBM watsonx.ai project id  
+>>- `IBM_WATSONX_URL`: your IBM Datacenter endpoint URL
+>>
+>>If you're new to watsonx.ai, it's simple to get started. Head over to the [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai) page, where you'll find all the resources needed to set up a Cloud instance. From there, you can begin a free trial. If you don't already have an IBM Cloud account, the setup process will guide you through creating one.  
+>>The detailed process for obtaining these keys is outlined on this page: [IBM watsonx API keys](ibm-watsonx-api-keys.md)
 > 
->      If you're new to Watsonx.ai, getting started is easy. Visit the [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai) page, where you'll find everything you need to set up a Cloud instance. From there, you can begin a free trial. If you don't have an IBM Cloud account, you'll be guided to create one during the setup process.
->    
->      The full process for obtaining these three elements is outlined on this page: [IBM Watsonx API keys](ibm-watsonx-api-keys.md)
-> 
->   2. **OpenAI API key**  
->      To get an OpenAI API key, follow these steps:
->      - Sign up / Log in: go to the [OpenAI Platform](https://platform.openai.com/) and create an account if you don't have one.  
->      - Access API Settings: once logged in, click on your profile icon in the top right corner, then select `View API Keys` from the dropdown menu.
->      - Generate a new API key: click `Create new secret key`. This will generate a new key that you can copy. You will only be able to view the key once for security reasons, so make sure you save it immediately.
->      - Paste it in your `.env` file just after `OPENAI_API_KEY=`.
+> - OpenAI API key  
+>>To get an OpenAI API key, follow these steps:  
+>>- Sign up / Log in: go to the [OpenAI Platform](https://platform.openai.com/) and create an account if you don't have one.    
+>>- Access API Settings: once logged in, click on your profile icon in the top right corner, then select `View API Keys` from the dropdown menu.  
+>>- Generate a new API key: click **Create new secret key**. This will generate a new key that you can copy. You will only be able to view the key once for security reasons, so make sure you save it immediately.  
+>>- Paste it in your `.env` file just after `OPENAI_API_KEY=`.
 
 
 ### Grant permission
