@@ -130,7 +130,7 @@ Please follow the following script, as illustrated in the following image:
 
 > Task 1. Visit [the demo UI](http://localhost:3000/)  
 > Task 2. Click on the **Chatbot** option located in the top menu  
-> Task 3. Make sure **IBU Insurance Agent 3.0 (Hybrid)** is selected in the **Agent** list on the left  
+> Task 3. Make sure **IBU Customer Support agent** is selected in the **Agent** list on the left  
 > Task 4. Make sure the **Settings** buttons show
 
 >    - **Use File Search**: **Yes**  
