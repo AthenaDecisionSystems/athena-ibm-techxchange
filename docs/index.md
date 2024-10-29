@@ -30,14 +30,6 @@ Below are the prerequisites to install and run the demo:
 >      - On Mac you can use either [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) or [Colima](https://github.com/abiosoft/colima).
 >- A web browser. The demo has been thoroughly tested using Google Chrome.
 
-## Known Limitations
-
-The following limitations are known and will be fixed promptly
-
-> - If you create rules in the ODM Decision Center and deploy them to the ODM Rule Execution Server, they will execute as expected but will not show as justifications, even if they fire
-> - You'll have to manually grant read, write, and execute permissions on the `decisions` directory
-> - Chat history is erased when you leave the Chatbot page by clicking another tab
-
 ## Demo Setup
 
 ### Clone the bootstrap files from GitHub
@@ -296,6 +288,22 @@ Reach out to us, as we'd love to have a conversation:
 
 >  - [Contact us](https://athenadecisions.com/contact-us)
 >  - Even better, [Schedule a 30-minute conversation](https://calendly.com/harley-6-ar/30min?month=2024-10)
->  - If you are at TechXChange 2024, reach out to Harley Davis on [LinkedIn](https://www.linkedin.com/in/harleydavis/)
 
 Create your own demos using the **Athena Owl Agent open-source Framework** and even contribute to its development. The framework will be made publicly available in the coming days.
+
+## Known Limitations
+
+The following limitations are known and will be fixed promptly
+
+> - If you create rules in the ODM Decision Center and deploy them to the ODM Rule Execution Server, they will execute as expected but will not show as justifications, even if they fire
+> - You'll have to manually grant read, write, and execute permissions on the `decisions` directory
+> - Chat history is erased when you leave the Chatbot page by clicking another tab
+
+## FAQ
+
+### How to empty the Vector Store?
+To empty the Vector Store where the Policy Document is stored, please apply the following procedure
+> - Stop the `ibu-backend` container. If you are using **Docker Desktop**, the preferred way is to go to the **Containers** page and click the **Stop** icon  on the `ibu-backend` line
+> - Delete the content of subdirectory `athena-ibm-techxchange/data/vs_db` except the `.keep` file 
+> - Delete the content of subdirectory `athena-ibm-techxchange/data/file_content` except the `.keep` file 
+> - Restart the `ibu-backend` container
