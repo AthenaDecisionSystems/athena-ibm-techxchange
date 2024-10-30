@@ -7,18 +7,6 @@ It then demonstrates the solution: An agentic architecture that orchestrates a r
 
 This demo, built on the **Athena Owl Agent Framework**, illustrates the power of **Hybrid AI** that combines Gen AI and Symbolic, rule-based AI.
 
-<!-- Commenting out the TOC as MkDocs creates one automatically 
-## Table of Contents
-
-1. [Prerequisites](#prerequisites)
-2. [Known Limitations](#known-limitations)
-3. [Demo Setup](#demo-setup)
-4. [Reading and understanding the business policy document](#reading-and-understanding-the-business-policy-document)
-5. [Demo Script](#demo-script)
-6. [Conclusion](#conclusion)
-6. [Call to Action](#call-to-action)
--->
-
 
 ## Prerequisites
 Below are the prerequisites to install and run the demo:  
@@ -285,11 +273,17 @@ That demo showed that by integrating a rule-based Decision Service in an agentic
 ## Call to Action
 
 Reach out to us, as we'd love to have a conversation:
+  >  - [Contact us](https://athenadecisions.com/contact-us)
+  >  - Even better, [Schedule a 30-minute conversation](https://calendly.com/harley-6-ar/30min?month=2024-10)
+  >
 
->  - [Contact us](https://athenadecisions.com/contact-us)
->  - Even better, [Schedule a 30-minute conversation](https://calendly.com/harley-6-ar/30min?month=2024-10)
+See Harley deliver the demo
+  > - [Watch the video on Athena's YouTube channel](https://youtu.be/7Fvbqwry4DM)
+  >
 
-Create your own demos using the **Athena Owl Agent open-source Framework** and even contribute to its development. The framework will be made publicly available in the coming days.
+Create your own demos using the **Athena Owl Agent open-source Framework** and even contribute to its development.
+  > - The framework will be made publicly available in the coming days
+  >
 
 ## Known Limitations
 
