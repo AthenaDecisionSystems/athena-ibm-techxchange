@@ -3,6 +3,7 @@ services:
     hostname: ibu-backend
     image: athenadecisionsystems/ibu-insurance:1.0.0
     container_name: ibu-backend
+    user: 1000:1000
     ports:
       - 8002:8000
     environment:
