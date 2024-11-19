@@ -10,7 +10,7 @@ if [ ! -f ".env" ]; then
 fi
 
 # Run docker compose up in detached mode
-echo "Starting Docker Compose..."
+echo "Starting the Athena IBU Insurance demo..."
 docker compose up -d
 
-echo "Docker Compose started successfully!"
+echo "Athean IBU Insurance demo started successfully!  Go to http://localhost:3000/ to show it."
