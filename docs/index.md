@@ -1,4 +1,4 @@
-# Athena IBU-Insurance Demo Quickstart
+# Athena Insurance Customer Service Demo Quickstart
 Businesses must follow regulations, internal policies, contract terms, and best practices when making key decisions and responding to customers. In this demo, we'll show you how Hybrid AI can help achieve this.
 
 This demo showcases an Insurance Customer Service scenario where a chatbot, relying solely on pure LLM technology, including Retrieval-Augmented Generation (RAG), produces inaccurate responses that do not align with the insurance carrier's policy.
@@ -7,42 +7,16 @@ It then demonstrates the solution: An agentic architecture that orchestrates a r
 
 This demo, built on the **Athena Owl Agent Framework**, illustrates the power of **Hybrid AI** that combines Gen AI and Symbolic, rule-based AI.
 
-<!-- Commenting out the TOC as MkDocs creates one automatically 
-## Table of Contents
-
-1. [Prerequisites](#prerequisites)
-2. [Known Limitations](#known-limitations)
-3. [Demo Setup](#demo-setup)
-4. [Reading and understanding the business policy document](#reading-and-understanding-the-business-policy-document)
-5. [Demo Script](#demo-script)
-6. [Conclusion](#conclusion)
-6. [Call to Action](#call-to-action)
--->
-
 
 ## Prerequisites
 Below are the prerequisites to install and run the demo:  
 
-> **UNDER PROGRESS BEGIN**
-
-> - Access to [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai).
->  - You can start a free trial by following the **Start your free trial** link in https://www.ibm.com/products/watsonx-ai. If you don't have an IBM Cloud account yet, you will be prompted to create one.  
-> 
-> **UNDER PROGRESS END**
-
-- [Git](https://git-scm.com/) client in order to get the bootstrap files on your machine.
-- [Docker Compose](https://docs.docker.com/compose/) in order to run the demo, which is a multi-container application.
-  - On Windows, the simplest and recommended approach is to get [Docker Desktop](https://docs.docker.com/desktop/install/windows-install/) as it includes both Docker Engine and Docker Compose required to run the demo.
-  - On Mac you can use either [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) or [Colima](https://github.com/abiosoft/colima).
-- A web browser. The demo has been thoroughly tested using Google Chrome.
-
-## Known Limitations
-
-The following limitations are known and will be fixed promptly
-
-> - If you create rules in the ODM Decision Center and deploy them to the ODM Rule Execution Server, they will execute as expected but will not show as justifications, even if they fire
-> - You'll have to manually grant read, write, and execute permissions on the `decisions` directory
-> - Chat history is erased when you leave the Chatbot page by clicking another tab
+>- [Git](https://git-scm.com/) client in order to get the bootstrap files on your machine.
+>- Some API keys, including access to [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai), see below for all the details.
+>- [Docker Compose](https://docs.docker.com/compose/) in order to run the demo, which is a multi-container application.
+>      - On Windows, the simplest and recommended approach is to get [Docker Desktop](https://docs.docker.com/desktop/install/windows-install/) as it includes both Docker Engine and Docker Compose required to run the demo.
+>      - On Mac you can use either [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) or [Colima](https://github.com/abiosoft/colima).
+>- A web browser. The demo has been thoroughly tested using Google Chrome.
 
 ## Demo Setup
 
@@ -50,23 +24,26 @@ The following limitations are known and will be fixed promptly
 
 > - Run `git clone https://github.com/AthenaDecisionSystems/athena-ibm-techxchange.git` from an empty directory.  This creates a subdirectory `athena-ibm-techxchange`
 
-### Create your own environment file
-
-> **UNDER PROGRESS BEGIN**
+### Create your own `.env` environment file
 
 > - Copy the provided `athena-ibm-techxchange\#.env#` file to `athena-ibm-techxchange\.env`
-> - Open that file and provide your own value for the following
-> 1. **Create an IBM watsonx.ai account**  
->    Visit the [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai) page and follow the links to set up a Cloud instance.
->
-> 2. **Generate an API key**  
->   In your IBM Cloud account, go to `Profile and settings` and generate an API key => WATSONX_APIKEY=
-IBM_WATSONX_APIKEY=
->
-> 4. **Copy your watsonx.ai configuration parameters**  
-> Create a new watsonx.ai project and copy IBM_WATSONX_URL and IBM_WATSON_PROJECT_ID=
->
-> **UNDER PROGRESS END**
+> - Edit that file and provide your own values for the API keys.  
+> 
+> - IBM watsonx.ai API keys  
+> Accessing IBM watsonx.ai foundation models requires the following keys:  
+>> - `WATSONX_APIKEY` and `IBM_WATSONX_APIKEY`: your IBM Cloud user API key. (The same key appears twice in the `.env` file.)  
+>> - `IBM_WATSON_PROJECT_ID`: an IBM watsonx.ai project id  
+>> - `IBM_WATSONX_URL`: your IBM Datacenter endpoint URL
+>>
+>If you're new to watsonx.ai, it's simple to get started. Head over to the [IBM watsonx.ai](https://www.ibm.com/products/watsonx-ai) page, where you'll find all the resources needed to set up a Cloud instance. From there, you can begin a free trial. If you don't already have an IBM Cloud account, the setup process will guide you through creating one.  
+>>The detailed process for obtaining these keys is described on this page: [How to Create Your watsonx.ai API Keys](ibm-watsonx-api-keys.md)
+> 
+> - OpenAI API key  
+>To get an OpenAI API key, follow these steps:  
+>>- Sign up / Log in: go to the [OpenAI Platform](https://platform.openai.com/) and create an account if you don't have one.    
+>>- Access API Settings: once logged in, click on your profile icon in the top right corner, then select **View API Keys** from the dropdown menu.  
+>>- Generate a new API key: click **Create new secret key**. This will generate a new key that you can copy. You will only be able to view the key once for security reasons, so make sure you save it immediately.  
+>>- Paste it in your `.env` file just after `OPENAI_API_KEY=`.
 
 
 ### Grant permission
@@ -133,7 +110,7 @@ Please follow the following script, as illustrated in the following image:
 
 > Task 1. Visit [the demo UI](http://localhost:3000/)  
 > Task 2. Click on the **Chatbot** option located in the top menu  
-> Task 3. Make sure **IBU Insurance Agent 3.0 (Hybrid)** is selected in the **Agent** list on the left  
+> Task 3. Make sure **IBU Customer Support agent** is selected in the **Agent** list on the left  
 > Task 4. Make sure the **Settings** buttons show
 
 >    - **Use File Search**: **Yes**  
@@ -296,9 +273,31 @@ That demo showed that by integrating a rule-based Decision Service in an agentic
 ## Call to Action
 
 Reach out to us, as we'd love to have a conversation:
+  >  - [Contact us](https://athenadecisions.com/contact-us)
+  >  - Even better, [Schedule a 30-minute conversation](https://calendly.com/harley-6-ar/30min?month=2024-10)
+  >
 
->  - [Contact us](https://athenadecisions.com/contact-us)
->  - Even better, [Schedule a 30-minute conversation](https://calendly.com/harley-6-ar/30min?month=2024-10)
->  - If you are at TechXChange 2024, reach out to Harley Davis on [LinkedIn](https://www.linkedin.com/in/harleydavis/)
+See Harley deliver the demo
+  > - [Watch the video on Athena's YouTube channel](https://youtu.be/7Fvbqwry4DM)
+  >
 
-Create your own demos using the **Athena Owl Agent open-source Framework** and even contribute to its development. The framework will be made publicly available in the coming days.
+Create your own demos using the **Athena Owl Agent open-source Framework** and even contribute to its development.
+  > - The framework will be made publicly available in the coming days
+  >
+
+## Known Limitations
+
+The following limitations are known and will be fixed promptly
+
+> - If you create rules in the ODM Decision Center and deploy them to the ODM Rule Execution Server, they will execute as expected but will not show as justifications, even if they fire
+> - You'll have to manually grant read, write, and execute permissions on the `decisions` directory
+> - Chat history is erased when you leave the Chatbot page by clicking another tab
+
+## FAQ
+
+### How to empty the Vector Store?
+To empty the Vector Store where the Policy Document is stored, please apply the following procedure
+> - Stop the `ibu-backend` container. If you are using **Docker Desktop**, the preferred way is to go to the **Containers** page and click the **Stop** icon  on the `ibu-backend` line
+> - Delete the content of subdirectory `athena-ibm-techxchange/data/vs_db` except the `.keep` file 
+> - Delete the content of subdirectory `athena-ibm-techxchange/data/file_content` except the `.keep` file 
+> - Restart the `ibu-backend` container

@@ -1,8 +1,8 @@
-site_name: Athena @ IBM TechXchange 2024
+site_name: Athena Insurance Customer Service Demo
 copyright: Copyright &copy; 2024 Athena Decision Systems
 repo_url: https://github.com/AthenaDecisionSystems/athena-ibm-techxchange
 nav:
-  - Introduction: index.md
+  - Quickstart: index.md
 
 theme: 
   name: material
